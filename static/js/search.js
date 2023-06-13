@@ -10,11 +10,15 @@ function fetchSuggestions(query,url) {
             var names = data.names;
             var len = ids.length;
                     $("#suggestions-list").empty();
-                    for( var i = 0; i<len; i++){
-                        $("#suggestions-list").append("<a class=\"text-secondary mb-2\" href=\"ProductDetails/"+ids[i]+"/\"><i class=\"fa fa-angle-right mr-2\"></i>"+names[i]+"</a> <br>");
-                        //we got the response
-                        
-                        
+                    if(len!=0){
+                        for( var i = 0; i<len; i++){
+                            $('#suggestions-list').show();
+                            $("#suggestions-list").append("<a class=\"text-secondary mb-2\" href=\"ProductDetails/"+ids[i]+"/\"><i class=\"fa fa-angle-right mr-2\"></i>"+names[i]+"</a> <br>");
+                            //we got the response
+                        }
+                    }
+                    else{
+                        $('#suggestions-list').hide();
                     }
                     // alert('Successfully called');
                     
@@ -30,5 +34,10 @@ function fetchSuggestions(query,url) {
 $('#search-box').on('input', function() {
     var query = $(this).val();
     var url = $(this).attr('href');
-    fetchSuggestions(query,url);
+    if(query==''){
+        $('#suggestions-list').hide();
+    } 
+    else{
+        fetchSuggestions(query,url);
+    }
 });

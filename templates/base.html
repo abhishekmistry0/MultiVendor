@@ -127,8 +127,8 @@
                         <a  href="{% url 'Aboutus' %}" class="nav-item nav-link">About</a>
                     </div>
                     <div class="nav-item dropdown">
-                        <input type="text" href="{% url 'SearchSuggestions' %}" placeholder="Search..." class="nav-link dropdown-toggle" id="search-box" data-toggle="dropdown"></i></a>
-                        <div class="dropdown-menu bg-light rounded-0 border-0 m-0 w-100" id="suggestions-list">
+                        <input type="text" href="{% url 'SearchSuggestions' %}" placeholder="Search..." class="nav-link" id="search-box" ></i></a>
+                        <div class="dropdown-menu bg-primary rounded-0 border-0 m-0 w-100" id="suggestions-list">
                         </div>
                     </div>
                     {% comment %} <div class="col-lg-4 col-6 text-left">
@@ -167,10 +167,10 @@
     <div class="row px-xl-5 pt-5">
         <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
             <h5 class="text-secondary text-uppercase mb-4">Get In Touch</h5>
-            <p class="mb-4">Building, Parimal Garden, 3rd Eye Two, 306, Panchvati Cir, Ambawadi, Ahmedabad, Gujarat 380009</p>
-            <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>201, Waytoweb, Ahmedabad</p>
-            <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@example.com</p>
-            <p class="mb-2"><i class="fa fa-phone-alt text-primary mr-3"></i>07940041819</p>
+            <p class="mb-4"> Maninagar, Ahmedabad, Gujarat 380008</p>
+            <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Maninagar, Ahmedabad</p>
+            <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>abhishekmistry0@gmail.com</p>
+            <p class="mb-2"><i class="fa fa-phone-alt text-primary mr-3"></i>+91 9574540496</p>
         </div>
         <div class="col-lg-8 col-md-12">
             <div class="row">
@@ -192,7 +192,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">
-                    <h6 class="text-secondary text-uppercase mt-4 mb-3">About Us</h6>
+                    <h6 class="text-secondary text-uppercase mt-4 mb-3">About Me</h6>
                     <div class="d-flex">
                         {% comment %} <a class="btn btn-primary btn-square mr-2" href="https://instagram.com/craft__makers21?igshid=ZDdkNTZiNTM="><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-primary btn-square mr-2" href="https://instagram.com/craft__makers21?igshid=ZDdkNTZiNTM="><i class="fab fa-facebook-f"></i></a> {% endcomment %}
@@ -239,6 +239,23 @@
 
     <!-- Template Javascript -->
     <script src="{% static 'js/main.js' %}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#search-box').click(function() {
+                if ($('#suggestions-list').text().trim() !== '' && '#search-box').text().trim() !== '') {
+                    $('#suggestions-list').show();
+                }
+            });
+    
+            $(document).click(function(event) {
+                var target = $(event.target);
+                if (!target.closest('.dropdown').length) {
+                    $('#suggestions-list').hide();
+                }
+            });
+        
+        });
+    </script>
 </body>
 
 </html>

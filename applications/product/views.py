@@ -100,7 +100,7 @@ def whishList(request):
 class SearchSuggestionView(View):
     def get(self, request):
         query = request.GET.get('q', '')
-        products = product.objects.filter(name__icontains=query)
+        products = product.objects.filter(name__icontains=query)[:5]
         ids = [product.id for product in products]
         names = [product.name for product in products]
         return JsonResponse({'ids': ids,'names':names})

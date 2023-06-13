@@ -36,7 +36,7 @@ def CheckoutViews(request):
         if data:
             if paymentid == "COD":
                 data.save()
-                return render(request,"invoice.html",{"data":data})
+                return redirect('invoice')
             else:
                 data.save()
                 return redirect('Payment')
@@ -58,7 +58,9 @@ def invoice(request):
         .prefetch_related('cartitem_set__product')
         .get(user=request.user)
                 )
+    orderMdlObj=CheckOut.objects.filter(username=request.user.username).latest('id')
     context["cart"]=cartMdlObj
+    context["order"]=orderMdlObj
     return render(request,"invoice.html",context)
 
 @login_required(login_url='userlogin')

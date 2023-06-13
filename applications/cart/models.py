@@ -8,7 +8,7 @@ class Cart(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE,unique=True)
     def __str__(self):
         return self.user.username
-    def cart_total_amount(self:QuerySet):
+    def cart_total_amount(self):
         cart_total_amount= self.cartitem_set.annotate(
             numeric_quantity=ExpressionWrapper(F('quantity'), output_field=FloatField())
         ).aggregate(

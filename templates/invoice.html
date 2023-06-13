@@ -65,7 +65,7 @@
                     <div class="row">
                         <div class="col-md-12 text-center">
                             <h2>INVOICE</h2>
-                            <h5>ID:{{data.id}}</h5>
+                            <h5>ID:{{order.id}}</h5>
                         </div>
                     </div>
                     <br />
@@ -81,11 +81,11 @@
                                {% for cartItem in cart.cartitem_set.all %}
 
                                 <tr>
-                                    <td class="col-md-9">{{value.name}} x {{value.quantity}}</td>
+                                    <td class="col-md-9">{{cartItem.product.name}} x {{cartItem.quantity}}</td>
                                     <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i>₹{% widthratio cartItem.product.price 1 cartItem.quantity %} </td>
                                 </tr>
                                 {% endfor %}
-                                {% if data.city != 'Ahmedabad' %}
+                                {% comment %} {% if data.city != 'Ahmedabad' %}
                                 <tr>
                                     <td class="text-right">
                                     
@@ -105,10 +105,10 @@
                                     </td>
                                 </tr>
                                 
-                                {% endif %}
+                                {% endif %} {% endcomment %}
                                 <tr style="color: #F81D2D;">
                                     <td class="text-right"><h4><strong>Total:</strong></h4></td>
-                                    <td class="text-left"><h4><strong><i class="fas fa-rupee-sign" area-hidden="true"></i> {{data.totalOrderPrice}} </strong></h4></td>
+                                    <td class="text-left"><h4><strong><i class="fas fa-rupee-sign" area-hidden="true"></i> {{cart.cart_total_amount}} </strong></h4></td>
                                 </tr>
                             </tbody>
                         </table>
