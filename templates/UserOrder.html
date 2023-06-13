@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Breadcrumb Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="{% url 'mainpage' %}">Home</a>
+                    <a class="breadcrumb-item text-dark" href="{% url 'UserOrder' %}">Order</a>
+                    <span class="breadcrumb-item active">Your Order </span>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+    <!-- Cart Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-lg-12 table-responsive mb-5">
+                <table class="table table-light table-borderless table-hover text-center mb-0">
+                    
+                    <tbody class="align-middle">
+                        <div class="row"> 
+                            {% for i in orders %}
+                            <div class="col-6">   
+                                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Order Id : #{{i.id}} Ordered By: {{i.first_name}} {{i.last_name}}</span></h5>
+                                <div class="bg-light p-3 mb-5">
+                                    <div class="border-bottom pb-2">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div style="color:black;font-size: 16px;font-weight: bolder;">Product Name</div>
+                                            </div>
+                                            <div class="col-2 text-right">
+                                                <div style="color:black;font-size: 16px;font-weight: bolder;">Price</div>
+                                            </div>
+                                            <div class="col-2 text-center">
+                                                <div style="color:black;font-size: 16px;font-weight: bolder;">Quantity</div>
+                                            </div>
+                                            <div class="col-2 text-right">
+                                                <div style="color:black;font-weight: bolder;">Total Price</div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        {% for j in i.ordersitems_set.all %}
+                                        <div class="row mb-3">
+                                            <div class="col-6">
+                                                <a class="text-decoration-none text" style="color:#FFD333;" href="{% url 'ProductDetails' j.ordersItem.id%}">
+                                                    {{j.ordersItem.name}} 
+                                                </a>X {{j.orderedItemQuantity}}
+                                            </div>
+                                            <div class="col-2 text-right">
+                                                <h6>{{j.ordersItem.price}}</h6>
+                                            </div>
+                                            <div class="col-2 text-center">
+                                                <h6>{{j.orderedItemQuantity}}</h6>
+                                            </div>
+                                            <div class="col-2 text-right">
+                                                <h6>₹{% widthratio j.ordersItem.price 1 j.orderedItemQuantity %} </h6>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    {% comment %} <div class="border-bottom pb-2">
+                                        <div style="color:black;font-size: 16px;font-weight: bolder;">Product Name</div>
+                                        <div style="color:black;font-weight: bolder;float: right;margin: -25px 0px 0px 0px;">Price</div>
+                                        <br>
+                                    {% for j in i.ordersitems_set.all %}
+                                        <div class="d-flex justify-content-between mb-3">
+                                            
+                                            <a class="text-decoration-none text" style="color:#FFD333; width:10rem;" href="{% url 'ProductDetails' j.ordersItem.id%}">{{j.ordersItem.name}} X {{j.orderQuantity}}</a>
+                                            
+                                            <h6>{{j.ordersItem.price}}</h6>
+                                        </div>
+                                        {% endfor %}    
+                                    </div> {% endcomment %}
+                                    <div class="pt-2">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <h6>Total(May be charged 100 Rs/- for Delivery)</h6>
+                                            <h6>{{i.totalOrderPrice}}</h6>
+                                        </div>
+                                        <p href="/checkout/" class="btn btn-block btn-primary font-weight-bold my-3 py-3" >{{i.Payment_status}}</p>
+                                    </div>
+                                </div>
+                                {% comment %} </div> {% endcomment %}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+    <!-- Cart End -->
+
+   
+    {% endblock %}

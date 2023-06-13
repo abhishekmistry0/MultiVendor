@@ -1,0 +1,140 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block content %}
+
+<!-- Contact Start -->
+<div class="container-fluid">
+  <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4">
+    <span class="bg-secondary pr-3">CheckOut</span>
+  </h2>
+  <div class="row px-xl-5">
+    <div class="col-lg-7 mb-5">
+      <div class="contact-form bg-light p-30">
+        <div id="success"></div>
+        <form name="sentMessage" method="POST">
+          {% csrf_token %}
+          <div class="control-group">
+            <input
+              type="text"
+              class="form-control"
+              name="fname"
+              id="f_name"
+              placeholder="First Name"
+              required="required"
+              data-validation-required-message="Please enter your first name"
+            />
+            <p class="help-block text-danger"></p>
+          </div>
+          <div class="control-group">
+            <input
+              type="text"
+              class="form-control"
+              name="lname"
+              id="l_name"
+              placeholder="Last Name"
+              required="required"
+              data-validation-required-message="Please enter your last Name"
+            />
+            <p class="help-block text-danger"></p>
+          </div>
+          <div class="control-group">
+            <input
+              type="text"
+              class="form-control"
+              name="email"
+              id="add"
+              placeholder="Email"
+              required="required"
+              data-validation-required-message="Please enter your address"
+            />
+            <p class="help-block text-danger"></p>
+          </div>
+
+          <div class="control-group">
+            <input
+              type="text"
+              class="form-control"
+              name="address"
+              id="add"
+              placeholder="Address"
+              required="required"
+              data-validation-required-message="Please enter your address"
+            />
+            <p class="help-block text-danger"></p>
+          </div>
+          <div class="control-group">
+            <select name="city" class="form-control">
+              <option  value="Ahmedabad">Ahmedabad</option>
+              <option  value="Anjuna Beach">Anjuna Beach</option>
+              <option  value="Surat">Surat</option>
+              <option  value="Gandhinagar">Gandhinagar</option>
+              <option  value="Nadiad">Nadiad</option>
+              <option  value="bharuch">bharuch</option>
+              <option  value="Vadodara">Vadodara</option>
+              <option  value="Navsari">Navsari</option>
+              <option  value="pune">pune</option>
+              <option  value="Mumbai">Mumbai</option>
+              <option  value="nagpur">nagpur</option>
+              <option  value="panaji">panaji</option>
+              <option  value="siri">siri</option>
+              <option  value="Mehrauli">Mehrauli</option>
+              <option  value="indira nagaer">indira nagar</option>
+              <option  value="Frazer Town">Frazer Town</option>
+              <option  value="Gangtok">Gangtok</option>
+              <option  value="pelling">pelling</option>
+              <option  value="Srinagar">Srinagar</option>
+              <option  value="pahalgam">pahalgam</option>
+              <option  value="jammu">jammu</option>
+              <option  value="jaipur">jaipur</option>
+              <option  value="Ajmer">Ajmer</option>
+              <option  value="Bikaner">Bikaner</option>
+            </select>
+            <p class="help-block text-danger"></p>
+          </div>
+          <div class="control-group">
+            <select name="state" class="form-control">
+              <option  value="Gujarat">Gujarat</option>
+              <option  value="Goa">Goa</option>
+              <option  value="Maharastra">Maharastra</option>
+              <option  value="Delhi">Delhi</option>
+              <option  value="Banglore">Banglore</option>
+              <option  value="Sikkim">Sikkim</option>
+              <option  value="jammu-Kashmir">jammu-Kashmir</option>
+              <option  value="Rajesthan">Rajesthan</option>
+            </select>
+            <p class="help-block text-danger"></p>
+          </div>
+          <br />
+          <div>
+            <label
+              ><input type="radio" name="paymentid" value="COD" />&nbsp;Pay Cash
+              On Delivery</label
+            >
+          </div>
+          <div>
+            <label
+              ><input type="radio" name="paymentid" value="Online" />&nbsp;Pay
+              Online</label
+            >
+          </div>
+          <br />
+          <div>
+            <button
+              class="btn btn-primary py-2 px-4"
+              type="submit"
+              id="sendMessageButton"
+            >
+              Purchase
+            </button>
+          </div>
+        </form>
+      </div>
+      {% if msg %}
+      <div class="alert alert-danger" role="alert">{{msg}}</div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<!-- Contact End -->
+
+{% endblock %}

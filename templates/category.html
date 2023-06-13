@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Categories Start -->
+    {% comment %} <div class="container-fluid pt-5">
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Categories</span></h2>
+        <div class="row px-xl-5 pb-3">
+            {% for i in category %}
+            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                <a class="text-decoration-none" href="{% url 'productcatev' i.id %}">
+                    <div class="cat-item d-flex align-items-center mb-4">
+                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
+                            <img class="img-fluid" src="{{i.Category_image.url}}" alt="">
+                        </div>
+                        <div class="flex-fill pl-3">
+                            <h6>{{i.sub_category_name}}</h6>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div> {% endcomment %}
+    <!-- Categories End -->
+    <!-- Offer Start -->
+    <div class="container-fluid pt-5 pb-3">
+        <div class="row px-xl-5">
+            {% for i in category %}
+            <div class="col-md-4">
+               
+                <div class="product-offer mb-30" style="height: 300px;">
+                    <img class="img-fluid" src="{{i.Category_image.url}}" alt="">
+                    <div class="offer-text">
+                        <h3 class="text-white mb-3">{{i.sub_category_name}}</h3>
+                        <a href="{% url 'productcatev' i.id %}" class="btn btn-primary">Shop Now</a>
+                    </div>
+                </div>
+              
+            </div>
+            {% endfor %}
+           
+        </div>
+    </div>
+    <!-- Offer End -->
+    {% endblock content %}

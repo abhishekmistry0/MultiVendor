@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Carousel Start -->
+    <div class="container-fluid mb-3">
+        <div class="row px-xl-5">
+            <div class="col-lg-12">
+                <div id="header-carousel" class="carousel slide carousel-fade mb-30 mb-lg-0" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#header-carousel" data-slide-to="1"></li>
+                        <li data-target="#header-carousel" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item position-relative active" style="height: 430px;">
+                            <img class="position-absolute w-100 h-100" src="https://img.freepik.com/premium-vector/product-advertising-hero-image-header-layout_1302-21013.jpg" style="object-fit: cover;">
+                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                <div class="p-3" style="max-width: 700px;">
+                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Best Mobile</h1>
+                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn">We have All Type of Mobile</p>
+                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="{% url 'subCategory' 12 %}">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item position-relative" style="height: 430px;">
+                            <img class="position-absolute w-100 h-100" src="https://i.pinimg.com/originals/3b/a6/79/3ba679fa46d14c310ee8008891ea5754.jpg" style="object-fit: cover;">
+                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                <div class="p-3" style="max-width: 700px;">
+                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Woman Clothes</h1>
+                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Fashionable and trendy clothes for you. | Make your look more astounding.</p>
+                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="{% url 'subCategory' 11 %}">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item position-relative" style="height: 430px;">
+                            <img class="position-absolute w-100 h-100" src="https://www.shutterstock.com/image-photo/tools-accessories-diy-jewelry-workplace-260nw-2136130151.jpg" style="object-fit: cover;">
+                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                <div class="p-3" style="max-width: 700px;">
+                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Jewellery Accessories </h1>
+                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn">One stop Jewellery shopping.|We have the Jewellery for you.</p>
+                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="{% url 'subCategory' 14 %}">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Categories Start -->
+    <div class="container-fluid pt-5">
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Categories</span></h2>
+        <div class="row px-xl-5 pb-3">
+            {% for i in data %}
+            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                <a class="text-decoration-none" href="{% url 'subCategory' i.id %}">
+                    <div class="cat-item d-flex align-items-center mb-4">
+                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
+                            <img class="img-fluid" src="{{i.Category_image.url}}" alt="">
+                        </div>
+                        <div class="flex-fill pl-3">
+                            <h6>{{i.category_name}}</h6>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Categories End -->
+
+
+    {% comment %} <!-- Products Start -->
+    <div class="container-fluid pt-5 pb-3">
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Featured Products</span></h2>
+        <div class="row px-xl-5">
+            {% for post in page_obj.object_list %}
+            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                <div class="product-item bg-light mb-4">
+                    <div class="product-img position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="{{post.image.url}}" alt="">
+                        <div class="product-action">
+                            <a class="btn btn-outline-dark btn-square" href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i></a>
+                            <a class="btn btn-outline-dark btn-square" href="{% url 'shop' %}"><i class="fa fa-eye"></i></a>
+                        </div>
+                    </div>
+                    <div class="text-center py-4">
+                        <a class="h6 text-decoration-none text-wrap" style="width: 3rem;" href="">{{post.name}}</a>
+                        <div class="d-flex align-items-center justify-content-center mt-2">
+                            <h5>₹{{post.price}}</h5><h6 class="text-muted ml-2"></h6>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+           {% endfor %}
+        </div>
+    </div>
+    <!-- Products End --> {% endcomment %}
+
+    {% comment %} <center>
+        {%if page_obj.has_previous %}
+        <a href="?page={{page_obj.previous_page_number}}" style="color:black; padding: 0px 8px; background-color:#FFD333; font-size:25px; text-decoration:none;"><</a>&nbsp;&nbsp; 
+        {% endif %}
+        <span>{{page_obj.number}}</span>
+            
+            {%if page_obj.has_next %} 
+            &nbsp;&nbsp;<a href="?page={{page_obj.next_page_number}}" style="color:black; padding: 0px 8px; background-color:#FFD333; font-size:25px; text-decoration:none;">></a>
+            {% endif %}
+    </center>
+ {% endcomment %}
+
+    <!-- Vendor Start -->
+   
+    <!-- Vendor End -->
+
+
+     <!-- Offer Start -->
+    <div class="container-fluid pt-5 pb-3">
+        <div class="row px-xl-5">
+            {% for i in data %}
+            <div class="col-md-4">
+               
+                <div class="product-offer mb-30" style="height: 300px;">
+                    <img class="img-fluid" src="{{i.Category_image.url}}" alt="">
+                    <div class="offer-text">
+                        <h3 class="text-white mb-3">{{i.category_name}}</h3>
+                        <a href="{% url 'subCategory' i.id %}" class="btn btn-primary">Shop Now</a>
+                    </div>
+                </div>
+              
+            </div>
+            {% endfor %}
+           
+        </div>
+    </div>
+    <!-- Offer End -->
+
+
+{% endblock %}

@@ -1,0 +1,130 @@
+{%load static%}
+<html>
+    <head>
+        <title>Advanced Product Estimate Invoice</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+        <!-- https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js
+        https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js
+        https://use.fontawesome.com/releases/v5.8.1/css/all.css -->
+        <style>
+                .body-main {
+        background: #ffffff;
+        border-bottom: 15px solid #1E1F23;
+        border-top: 15px solid #1E1F23;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        padding: 40px 30px !important;
+        position: relative ;
+        box-shadow: 0 1px 21px #808080;
+        font-size:10px;
+        
+        
+        
+    }
+
+    .main thead {
+		background: #1E1F23;
+        color: #fff;
+		}
+    .img{
+        height: 100px;}
+    h1{
+       text-align: center;
+    }
+
+    
+        </style>
+    </head>
+<body>
+<div class="container">
+
+    <div class="page-header">
+        <h1>Your Order is Confirmed...
+            <img src="{% static 'img/Confirm.jpg' %}" alt="Order Confirmed" width="75" height="75">
+            <br>This is your Invoice 
+        </h1> 
+    </div>
+    
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 body-main">
+                <div class="col-md-12">
+                   <div class="row">
+                        <div class="col-md-4">
+                            <img class="img" alt="Invoce Template" src="http://pngimg.com/uploads/shopping_cart/shopping_cart_PNG59.png" />
+                        </div>
+                        <div class="col-md-8 text-right">
+                            <h4 style="color: #F81D2D;"><strong>{{request.user.first_name}} {{request.user.last_name}}</strong></h4>
+                            
+                    
+                           
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h2>INVOICE</h2>
+                            <h5>ID:{{data.id}}</h5>
+                        </div>
+                    </div>
+                    <br />
+                    <div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th><h5>Description</h5></th>
+                                    <th><h5>Amount</h5></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               {% for cartItem in cart.cartitem_set.all %}
+
+                                <tr>
+                                    <td class="col-md-9">{{value.name}} x {{value.quantity}}</td>
+                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i>₹{% widthratio cartItem.product.price 1 cartItem.quantity %} </td>
+                                </tr>
+                                {% endfor %}
+                                {% if data.city != 'Ahmedabad' %}
+                                <tr>
+                                    <td class="text-right">
+                                    
+                                    <p>
+                                        <strong>Delivery charge: </strong>
+                                    </p>
+                                   
+                                   
+                                    </td>
+                                    <td>
+                                       
+                                    
+                                  
+                                    <p>
+                                        <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 100/-</strong>
+                                    </p>
+                                    </td>
+                                </tr>
+                                
+                                {% endif %}
+                                <tr style="color: #F81D2D;">
+                                    <td class="text-right"><h4><strong>Total:</strong></h4></td>
+                                    <td class="text-left"><h4><strong><i class="fas fa-rupee-sign" area-hidden="true"></i> {{data.totalOrderPrice}} </strong></h4></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <div class="col-md-12">
+                            <p><b>Date :</b> {{data.checkout_date}}</p>
+                            <br/>
+                            <p><b>Signature</b></p>
+                        </div>
+                        <a href="{% url 'cart_clear' %}">Back To Home Page</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
