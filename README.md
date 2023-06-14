@@ -6,7 +6,7 @@ Admin/Customer Login/Register,Category,Sub Category,Product,Order Placing/Tracki
 
 ##Client Interface:
 
-![Profile Image](Personal/Admininterface.png)
+![Profile Image](Personal/ClientInterface.png)
 
 ##Admin Interface:
 
