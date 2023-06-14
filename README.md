@@ -6,7 +6,7 @@ Admin/Customer Login/Register,Category,Sub Category,Product,Order Placing/Tracki
 
 ##Client Interface:
 
-![Profile Image](Personal/)
+![Profile Image](Personal/Admininterface.png)
 
 ##Admin Interface:
 
@@ -16,4 +16,4 @@ Steps:
 +Admin password:test@123
 Note:This admin account is intended solely for testing purposes. It does not have complete access privileges but rather limited access, allowing only viewing and adding functionality. It does not have permission to modify or delete any content because such actions could potentially disrupt the functionality of the hosted website.
 
-![Profile Image](Personal/)
+![Profile Image](Personal/Admininterface.png)
