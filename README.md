@@ -1,4 +1,8 @@
-# MultiVendor Django Project By Abhishek Mistry  
+# MultiVendor Django Project By Abhishek Mistry 
+
+#Live Project Link:
+http://multivendor.pythonanywhere.com/
+  
 ##Functionalities:  
   
 Admin/Customer Login/Register,Category,Sub Category,Product,Order Placing/Tracking,  
