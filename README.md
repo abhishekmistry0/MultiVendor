@@ -1,19 +1,19 @@
 # MultiVendor Django Project By Abhishek Mistry 
 
-#Live Project Link:
+# Live Project Link:
 http://multivendor.pythonanywhere.com/
   
-##Functionalities:  
+## Functionalities:  
   
 Admin/Customer Login/Register,Category,Sub Category,Product,Order Placing/Tracking,  
 cart,Payment,Invoice,Review,Whishlist,AboutUs,ContactUs  
   
   
-##Client Interface:  
+## Client Interface:  
   
 ![Profile Image](Personal/ClientInterface.png)  
   
-##Admin Interface:  
+## Admin Interface:  
   
 Steps:  
 -Click on Login then Use this credentials  
