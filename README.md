@@ -1,6 +1,6 @@
 # MultiVendor Django Project By Abhishek Mistry 
 
-# Live Project Link:
+## Live Project Link:
 http://multivendor.pythonanywhere.com/
   
 ## Functionalities:  
